@@ -6,7 +6,6 @@ data<- data[,-c(15:ncol(data))]
 shinyServer(
   function(input, output, session) {
     output$table <- renderTable({
-      
       criterio <- input$Criterio
       primera_busqueda <- input$primera_busqueda
       print(criterio)

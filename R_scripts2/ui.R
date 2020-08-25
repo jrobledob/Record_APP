@@ -13,21 +13,21 @@ shinyUI(
   pageWithSidebar(
     headerPanel("Record APP"),
     sidebarPanel(
-      selectInput("Criterio", "Seleccione el criterio principal de 
+      selectizeInput("Criterio", "Seleccione el criterio principal de 
                   búsqueda", choices = c("Producto", "Ingrediente activo","Uso agricola", 
                                         "Cultivo", "Nombre común de la peste", "Nombre científico de la peste")),
       conditionalPanel(condition = "input.Criterio == 'Ingrediente activo'",
-                       selectInput("primera_busqueda", "seleccione el ingrediente activo",choices= IA)),
+                       selectizeInput("primera_busqueda", "seleccione el ingrediente activo",choices= IA)),
       conditionalPanel(condition = "input.Criterio == 'Producto'",
-                       selectInput("primera_busqueda", "seleccione el producto",choices= productos)),
+                       selectizeInput("primera_busqueda", "seleccione el producto",choices= productos)),
       conditionalPanel(condition = "input.Criterio == 'Uso agricola'",
-                       selectInput("primera_busqueda", "seleccione el uso",choices= uso)),
+                       selectizeInput("primera_busqueda", "seleccione el uso",choices= uso)),
       conditionalPanel(condition = "input.Criterio == 'Cultivo'",
-                       selectInput("primera_busqueda", "seleccione el cultivo",choices= cultivo)),
+                       selectizeInput("primera_busqueda", "seleccione el cultivo",choices= cultivo)),
       conditionalPanel(condition = "input.Criterio == 'Nombre común de la peste'",
-                       selectInput("primera_busqueda", "seleccione el nombre común de la peste",choices= comun)),
+                       selectizeInput("primera_busqueda", "seleccione el nombre común de la peste",choices= comun)),
       conditionalPanel(condition = "input.Criterio == 'Nombre científico de la peste'",
-                       selectInput("primera_busqueda", "seleccione el nombre cientifico de la peste",choices= cientifico)),
+                       selectizeInput("primera_busqueda", "seleccione el nombre cientifico de la peste",choices= cientifico)),
       
       conditionalPanel(condition = "input.Distribution == 'Exponential'",
                        textInput("Lamda", "Please select Exponential Lamda", 1))),
