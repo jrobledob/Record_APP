@@ -1,0 +1,12 @@
+name: Record_APP
+title: Record_APP
+username:
+account: jrobledo
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2705135
+bundleId: 3555735
+url: https://jrobledo.shinyapps.io/Record_APP/
+when: 1598363541.14273
+asMultiple: FALSE
+asStatic: FALSE

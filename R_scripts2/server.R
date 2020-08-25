@@ -6,21 +6,14 @@ data<- data[,-c(15:ncol(data))]
 shinyServer(
   function(input, output, session) {
     output$table <- renderTable({
-      criterio <- input$Criterio
-      primera_busqueda <- input$primera_busqueda
-      primera_busqueda2 <- input$primera_busqueda2
-      primera_busqueda3 <- input$primera_busqueda3
-      primera_busqueda4 <- input$primera_busqueda4
-      primera_busqueda5 <- input$primera_busqueda5
-      primera_busqueda6 <- input$primera_busqueda6
+      criterio <- c(input$Criterio)
       print(criterio)
-      print(primera_busqueda)
-      print(primera_busqueda2)
-      print(primera_busqueda3)
-      print(primera_busqueda4)
-      print(primera_busqueda5)
-      print(primera_busqueda6)
-      data[which(apply(data, 1, function(r) any(r %in% c(primera_busqueda)))),]
+      cr1<- which(apply(data, 1, function(r) any(r %in% criterio[1])))
+      cr2<- which(apply(data, 1, function(r) any(r %in% criterio[2])))
+      cr3<- which(apply(data, 1, function(r) any(r %in% criterio[3])))
+      cr4<- which(apply(data, 1, function(r) any(r %in% criterio[4])))
+      selection<- Reduce(intersect, list(cr1,cr2,cr3,cr4))
+      data[selection,]
     }
     )
   }

@@ -3,28 +3,30 @@ library(readr)
 url<- "https://raw.githubusercontent.com/jrobledob/Record_APP/master/Data/agrochemicals.csv"
 data<- read_csv2(url(url))
 data<- data[,-c(15:ncol(data))]
-productos<- levels(as.factor(data$Producto))
-IA<- levels(as.factor(data$`Ingrediente activo`))
-uso<- levels(as.factor(data$`Uso Agricola`))
-cultivo<- levels(as.factor(data$Cultivo))
-comun<- levels(as.factor(data$`Nombre común`))
-cientifico<- levels(as.factor(data$`Nombre científico`))
+opciones<- c(data[,c(1,2,4,7:9)])
 shinyUI(
   pageWithSidebar(
     headerPanel("Record APP"),
     sidebarPanel(
-      checkboxInput("Producto", "Producto", FALSE),
-      checkboxInput("IA", "Ingrediente Activo", FALSE),
-      checkboxInput("Uso", "Uso Agrícola", FALSE),
-      checkboxInput("Cultivo", "Cultivo", FALSE),
-      checkboxInput("Ncomun", "Nombre común", FALSE),
-      checkboxInput("Ncientifico ", "Nombre científico", FALSE),
+      selectizeInput("Criterio", "Seleccione el criterio principal debúsqueda",
+                  choices = opciones, multiple = TRUE,  options = list(maxItems = 4)),
+                     
+      
+                                         #                                    "Cultivo", "Nombre común de la peste", "Nombre científico de la peste")),
+      
+      # headerPanel("Seleccione el criterio de búsqueda"),
+      # checkboxInput("Producto", "Producto", FALSE),
+      # checkboxInput("IA", "Ingrediente Activo", FALSE),
+      # checkboxInput("Uso", "Uso Agrícola", FALSE),
+      # checkboxInput("Cultivo", "Cultivo", FALSE),
+      # checkboxInput("Ncomun", "Nombre común", FALSE),
+      # checkboxInput("Ncientifico ", "Nombre científico", FALSE),
       
      # selectInput("Criterio", "Seleccione el criterio principal de 
      #            búsqueda", choices = c("Producto", "Ingrediente activo","Uso agricola", 
      #                                    "Cultivo", "Nombre común de la peste", "Nombre científico de la peste")),
-      conditionalPanel(condition = "input.Producto == 1",
-                       selectInput("producto", "seleccione el producto",choices= productos, selected = NA)),
+     # conditionalPanel(condition = "input.Producto == 1",
+      #                 selectInput("producto", "seleccione el producto",choices= productos, selected = NA)),
      
      
       # conditionalPanel(condition = "input.Criterio == 'Producto'",
